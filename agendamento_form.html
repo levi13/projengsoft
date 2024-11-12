@@ -161,12 +161,14 @@
         });
 
         // Navegação entre páginas
-        document.getElementById('nav-index').addEventListener('click', function () {
-    atualizarURL('/index.html');  // Voltar para a página inicial
+    // Navegação entre páginas com URLs fixas
+document.getElementById('nav-index').addEventListener('click', function () {
+    window.location.href = '/index.html';  // Voltar para a página inicial
 });
 document.getElementById('nav-list').addEventListener('click', function () {
-    atualizarURL('/agendamentos_list.html');  // Ir para a lista de agendamentos
+    window.location.href = '/agendamentos_list.html';  // Ir para a lista de agendamentos
 });
+
 
     </script>
 </body>
