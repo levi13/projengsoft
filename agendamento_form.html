@@ -25,17 +25,9 @@
             <button type="submit">Salvar Agendamento</button>
         </form>
 
-        <!-- Navegação entre as páginas -->
-        
-            <button id="nav-index">Página Inicial</button>
-            <button id="nav-list">Listar Agendamentos</button>
-       
-        <!-- Navegação entre as páginas 
-<div>
-    <button id="novo-agendamento">Criar Novo Agendamento</button>
-    <button id="voltar-home">Voltar à Página Inicial</button>
-</div>
--->
+        <!-- Navegação entre as páginas com links -->
+        <a href="https://levi13.github.io/projengsoft/index.html" id="nav-index">Página Inicial</a>
+        <a href="https://levi13.github.io/projengsoft/agendamentos_list.html" id="nav-list">Listar Agendamentos</a>
 
         <div id="success-message" style="display:none;">Agendamento criado com sucesso!</div> <!-- Mensagem de sucesso -->
     </main>
@@ -159,25 +151,6 @@
                 }
             }
         });
-
-        // Navegação entre páginas
-    // Navegação entre páginas com URLs fixas
-<script>
-    // Aguarda o carregamento completo da página
-    document.addEventListener('DOMContentLoaded', function() {
-        // Ao clicar no botão para voltar à página inicial
-        document.getElementById('nav-index').addEventListener('click', function() {
-            window.location.href = 'https://levi13.github.io/projengsoft/index.html';  // Voltar para a página inicial
-        });
-
-        // Ao clicar no botão para ir à lista de agendamentos
-        document.getElementById('nav-list').addEventListener('click', function() {
-            window.location.href = 'https://levi13.github.io/projengsoft/agendamentos_list.html';  // Ir para a lista de agendamentos
-        });
-    });
-</script>
-
-
     </script>
 </body>
 </html>
