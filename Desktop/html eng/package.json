@@ -1,9 +1,16 @@
 {
-    "name": "agendamento-app",
-    "version": "1.0.0",
-    "scripts": {
-        "start": "serve -s ."
-    },
-    "dependencies": {
-        "serve": "^14.2.4"
-    }
+  "name": "agendamento-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve -s ."
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
