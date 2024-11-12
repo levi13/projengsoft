@@ -24,22 +24,27 @@
     <script>
         // Função para atualizar a lista de agendamentos
         function atualizarListaDeAgendamentos() {
-            let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-            const listElement = document.getElementById('agendamentos-list');
-            const noAgendamentosMessage = document.getElementById('no-agendamentos');
-            listElement.innerHTML = ''; // Limpa a lista atual
+            // Verifica se o localStorage está disponível
+            if (typeof(Storage) !== "undefined") {
+                let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+                const listElement = document.getElementById('agendamentos-list');
+                const noAgendamentosMessage = document.getElementById('no-agendamentos');
+                listElement.innerHTML = ''; // Limpa a lista atual
 
-            if (agendamentos.length > 0) {
-                // Exibe a lista de agendamentos
-                agendamentos.forEach((agendamento, index) => {
-                    const li = document.createElement('li');
-                    li.textContent = `Descrição: ${agendamento.descricao}, Data: ${agendamento.data}, Hora: ${agendamento.hora}`;
-                    listElement.appendChild(li);
-                });
-                noAgendamentosMessage.style.display = 'none'; // Esconde a mensagem "Nenhum agendamento"
+                if (agendamentos.length > 0) {
+                    // Exibe a lista de agendamentos
+                    agendamentos.forEach((agendamento, index) => {
+                        const li = document.createElement('li');
+                        li.textContent = `Descrição: ${agendamento.descricao}, Data: ${agendamento.data}, Hora: ${agendamento.hora}`;
+                        listElement.appendChild(li);
+                    });
+                    noAgendamentosMessage.style.display = 'none'; // Esconde a mensagem "Nenhum agendamento"
+                } else {
+                    // Exibe a mensagem "Nenhum agendamento encontrado"
+                    noAgendamentosMessage.style.display = 'block';
+                }
             } else {
-                // Exibe a mensagem "Nenhum agendamento encontrado"
-                noAgendamentosMessage.style.display = 'block';
+                alert("Desculpe, seu navegador não suporta localStorage!");
             }
         }
 
