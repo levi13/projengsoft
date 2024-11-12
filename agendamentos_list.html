@@ -13,13 +13,11 @@
 
     <main>
         <ul id="agendamentos-list"></ul> <!-- Aqui será exibida a lista de agendamentos -->
-
         <a href="agendamento_form.html" class="back-button">Criar Novo Agendamento</a> <!-- Link para o formulário de criação de agendamento -->
-
         <div id="no-agendamentos" style="display:none;">Nenhum agendamento encontrado.</div> <!-- Mensagem de nenhum agendamento -->
     </main>
 
-    <script src="js/agendamentos_list.js"></script> <!-- Certifique-se de que este arquivo é carregado -->
+    <script src="js/agendamentos_list.js"></script>
 
     <script>
         // Função para atualizar a lista de agendamentos
@@ -30,16 +28,44 @@
             listElement.innerHTML = ''; // Limpa a lista atual
 
             if (agendamentos.length > 0) {
-                // Exibe a lista de agendamentos
+                noAgendamentosMessage.style.display = 'none'; // Esconde a mensagem "Nenhum agendamento"
+                
                 agendamentos.forEach((agendamento, index) => {
                     const li = document.createElement('li');
-                    li.textContent = `Descrição: ${agendamento.descricao}, Data: ${agendamento.data}, Hora: ${agendamento.hora}`;
+                    li.innerHTML = `
+                        <span>Descrição: ${agendamento.descricao}, Data: ${agendamento.data}, Hora: ${agendamento.hora}</span>
+                        <button onclick="editarAgendamento(${index})">Editar</button>
+                        <button onclick="excluirAgendamento(${index})">Excluir</button>
+                    `;
                     listElement.appendChild(li);
                 });
-                noAgendamentosMessage.style.display = 'none'; // Esconde a mensagem "Nenhum agendamento"
             } else {
-                // Exibe a mensagem "Nenhum agendamento encontrado"
-                noAgendamentosMessage.style.display = 'block';
+                noAgendamentosMessage.style.display = 'block'; // Exibe a mensagem "Nenhum agendamento"
+            }
+        }
+
+        // Função para editar um agendamento
+        function editarAgendamento(index) {
+            let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+            const agendamento = agendamentos[index];
+
+            // Redireciona para o formulário com parâmetros de edição
+            window.location.href = `agendamento_form.html?id=${index}&data=${agendamento.data}&hora=${agendamento.hora}&descricao=${agendamento.descricao}`;
+        }
+
+        // Função para excluir um agendamento com confirmação
+        function excluirAgendamento(index) {
+            if (confirm('Tem certeza que deseja excluir este agendamento?')) {
+                let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+                
+                // Remove o agendamento pelo índice
+                agendamentos.splice(index, 1);
+
+                // Atualiza o localStorage e a lista na página
+                localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+                atualizarListaDeAgendamentos();
+
+                console.log(`Agendamento ${index} excluído`);
             }
         }
 
