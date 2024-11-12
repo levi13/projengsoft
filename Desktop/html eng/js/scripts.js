@@ -17,8 +17,39 @@ function excluirAgendamento(index) {
     }
 }
 
+// Atualizar a URL sem recarregar a página
+function atualizarURL(path) {
+    history.pushState(null, null, path); // Atualiza a URL
+    exibirPagina(path); // Exibe a página correspondente
+}
+
+// Função para exibir o conteúdo de acordo com a URL
+function exibirPagina(path) {
+    const indexPage = document.getElementById('index');
+    const formPage = document.getElementById('form');
+    const listPage = document.getElementById('list');
+
+    // Esconde todas as páginas
+    indexPage.style.display = 'none';
+    formPage.style.display = 'none';
+    listPage.style.display = 'none';
+
+    // Exibe a página correta com base na URL
+    if (path === '/agendamento_form') {
+        formPage.style.display = 'block';
+    } else if (path === '/agendamentos_list') {
+        listPage.style.display = 'block';
+    } else {
+        indexPage.style.display = 'block'; // Página inicial
+    }
+}
+
 // Preencher formulário de edição com dados existentes
 document.addEventListener('DOMContentLoaded', function() {
+    // Exibe a página correta ao carregar
+    const path = window.location.pathname;
+    exibirPagina(path);
+
     const urlParams = new URLSearchParams(window.location.search);
     const agendamentoId = urlParams.get('id');
 
@@ -107,3 +138,14 @@ function atualizarListaDeAgendamentos() {
         listElement.appendChild(li);
     }
 }
+
+// Navegação entre páginas
+document.getElementById('nav-index').addEventListener('click', function() {
+    atualizarURL('/');  // Voltar para a página inicial
+});
+document.getElementById('nav-form').addEventListener('click', function() {
+    atualizarURL('/agendamento_form');  // Ir para o formulário
+});
+document.getElementById('nav-list').addEventListener('click', function() {
+    atualizarURL('/agendamentos_list');  // Ir para a lista de agendamentos
+});
