@@ -25,9 +25,9 @@
             <button type="submit">Salvar Agendamento</button>
         </form>
 
-        <!-- Navegação entre as páginas com links -->
-        <a href="https://levi13.github.io/projengsoft/index.html" id="nav-index">Página Inicial</a>
-        <a href="https://levi13.github.io/projengsoft/agendamentos_list.html" id="nav-list">Listar Agendamentos</a>
+        <!-- Navegação entre as páginas com links simplificados -->
+        <a href="index.html" id="nav-index">Página Inicial</a>
+        <a href="agendamentos_list.html" id="nav-list">Listar Agendamentos</a>
 
         <div id="success-message" style="display:none;">Agendamento criado com sucesso!</div> <!-- Mensagem de sucesso -->
     </main>
@@ -35,38 +35,7 @@
     <script src="js/agendamento_form.js"></script> <!-- Caminho para o JS na pasta js -->
 
     <script>
-        // Função para atualizar a URL e exibir a página correspondente sem recarregar
-        function atualizarURL(path) {
-            history.pushState(null, null, path); // Atualiza a URL
-            exibirPagina(path); // Exibe a página correspondente
-        }
-
-        // Função para exibir o conteúdo de acordo com a URL
-        function exibirPagina(path) {
-            const formPage = document.getElementById('form');
-            const listPage = document.getElementById('list');
-            const indexPage = document.getElementById('index');
-
-            // Esconde todas as páginas
-            formPage.style.display = 'none';
-            listPage.style.display = 'none';
-            indexPage.style.display = 'none';
-
-            // Exibe a página correta com base na URL
-            if (path === '/agendamento_form') {
-                formPage.style.display = 'block';
-            } else if (path === '/agendamentos_list') {
-                listPage.style.display = 'block';
-            } else {
-                indexPage.style.display = 'block'; // Página inicial
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
-            // Exibe a página correta ao carregar
-            const path = window.location.pathname;
-            exibirPagina(path);
-
             // Formulário de criação de agendamento
             document.getElementById('agendamento-form').addEventListener('submit', function (e) {
                 e.preventDefault(); // Impede o envio do formulário padrão
