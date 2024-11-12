@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Agendamento</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Criar Agendamento</h1>
+    </header>
+
+    <main>
+        <form id="agendamento-form">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora" required><br><br>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea><br><br>
+
+            <button type="submit">Salvar Agendamento</button>
+        </form>
+
+        <a href="index.html" class="back-button">Voltar para a Página Inicial</a> <!-- Botão de voltar -->
+
+        <div id="success-message" style="display:none;">Agendamento criado com sucesso!</div> <!-- Mensagem de sucesso -->
+    </main>
+
+    <script src="js/agendamento_form.js"></script> <!-- Seu script para salvar o agendamento -->
+</body>
+</html>
