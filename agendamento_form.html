@@ -162,12 +162,20 @@
 
         // Navegação entre páginas
     // Navegação entre páginas com URLs fixas
-document.getElementById('nav-index').addEventListener('click', function () {
-    window.location.href = 'projengsoft/index.html';  // Voltar para a página inicial
-});
-document.getElementById('nav-list').addEventListener('click', function () {
-    window.location.href = 'projengsoft/agendamentos_list.html';  // Ir para a lista de agendamentos
-});
+<script>
+    // Aguarda o carregamento completo da página
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ao clicar no botão para voltar à página inicial
+        document.getElementById('nav-index').addEventListener('click', function() {
+            window.location.href = 'https://levi13.github.io/projengsoft/index.html';  // Voltar para a página inicial
+        });
+
+        // Ao clicar no botão para ir à lista de agendamentos
+        document.getElementById('nav-list').addEventListener('click', function() {
+            window.location.href = 'https://levi13.github.io/projengsoft/agendamentos_list.html';  // Ir para a lista de agendamentos
+        });
+    });
+</script>
 
 
     </script>
