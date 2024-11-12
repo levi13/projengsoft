@@ -18,16 +18,25 @@ document.getElementById('agendamento-form').addEventListener('submit', function(
     agendamentos.push(agendamento);
     localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
 
-    // Exibe a mensagem de sucesso
-    document.getElementById('agendamento-form').style.display = 'none'; // Esconde o formulário
-    document.getElementById('success-message').style.display = 'block';  // Exibe a mensagem de sucesso
+    // Exibe a mensagem de sucesso e oculta o formulário
+    document.getElementById('agendamento-form').style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
 
-    // Configura os botões de navegação
-    document.getElementById('novo-agendamento').addEventListener('click', function() {
-        window.location.href = 'agendamento_form.html';  // Redireciona para a página de criação de agendamento
+    // Configura os botões de navegação após exibir a mensagem de sucesso
+    const novoAgendamentoBtn = document.createElement('button');
+    novoAgendamentoBtn.textContent = "Criar Novo Agendamento";
+    novoAgendamentoBtn.addEventListener('click', function() {
+        window.location.href = 'agendamento_form.html';
     });
 
-    document.getElementById('voltar-home').addEventListener('click', function() {
-        window.location.href = 'index.html';  // Redireciona para a tela inicial
+    const voltarHomeBtn = document.createElement('button');
+    voltarHomeBtn.textContent = "Voltar à Página Inicial";
+    voltarHomeBtn.addEventListener('click', function() {
+        window.location.href = 'index.html';
     });
+
+    // Adiciona os botões após a mensagem de sucesso
+    const successMessage = document.getElementById('success-message');
+    successMessage.appendChild(novoAgendamentoBtn);
+    successMessage.appendChild(voltarHomeBtn);
 });
