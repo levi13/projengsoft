@@ -13,7 +13,12 @@
 
     <main>
         <ul id="agendamentos-list"></ul> <!-- Aqui será exibida a lista de agendamentos -->
+        
         <a href="agendamento_form.html" class="back-button">Criar Novo Agendamento</a> <!-- Link para o formulário de criação de agendamento -->
+
+        <!-- Botão para voltar para a página inicial -->
+        <button onclick="voltarParaHome()" class="back-button">Voltar para a Home</button>
+
         <div id="no-agendamentos" style="display:none;">Nenhum agendamento encontrado.</div> <!-- Mensagem de nenhum agendamento -->
     </main>
 
@@ -50,7 +55,7 @@
             const agendamento = agendamentos[index];
 
             // Redireciona para o formulário com parâmetros de edição
-            window.location.href = `agendamento_form.html?id=${index}&data=${agendamento.data}&hora=${agendamento.hora}&descricao=${agendamento.descricao}`;
+            window.location.href = `projengsoft/agendamento_form.html?id=${index}&data=${agendamento.data}&hora=${agendamento.hora}&descricao=${agendamento.descricao}`;
         }
 
         // Função para excluir um agendamento com confirmação
@@ -67,6 +72,11 @@
 
                 console.log(`Agendamento ${index} excluído`);
             }
+        }
+
+        // Função para voltar para a página inicial
+        function voltarParaHome() {
+            window.location.href = 'projengsoft/index.html';
         }
 
         // Atualiza a lista de agendamentos ao carregar a página
