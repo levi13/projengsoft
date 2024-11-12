@@ -2,7 +2,7 @@
   "name": "agendamento-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "serve -s Desktop/html%20eng"
+    "start": "serve -s './Desktop/html eng'"
   },
   "dependencies": {
     "serve": "^14.2.4"
