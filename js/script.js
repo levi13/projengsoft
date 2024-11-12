@@ -17,7 +17,7 @@ function excluirAgendamento(index) {
     }
 }
 
-// Atualizar a URL sem recarregar a página
+// Função para atualizar a URL e exibir a página correspondente
 function atualizarURL(path) {
     history.pushState(null, null, path); // Atualiza a URL
     exibirPagina(path); // Exibe a página correspondente
@@ -54,16 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const agendamentoId = urlParams.get('id');
 
     if (agendamentoId) {
-        // Carregar dados do agendamento (isso seria feito normalmente com AJAX ou outra chamada para o back-end)
-        // Para fins de demonstração, vamos simular preenchendo com dados estáticos
-        if (agendamentoId == 1) {
-            document.getElementById('data').value = '2024-11-15';
-            document.getElementById('hora').value = '10:00';
-            document.getElementById('descricao').value = 'Reunião com João';
-        } else if (agendamentoId == 2) {
-            document.getElementById('data').value = '2024-11-16';
-            document.getElementById('hora').value = '14:00';
-            document.getElementById('descricao').value = 'Reunião com Maria';
+        let agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+        const agendamento = agendamentos[agendamentoId];
+        if (agendamento) {
+            document.getElementById('data').value = agendamento.data;
+            document.getElementById('hora').value = agendamento.hora;
+            document.getElementById('descricao').value = agendamento.descricao;
         }
     }
 
